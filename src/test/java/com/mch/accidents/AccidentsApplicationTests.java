@@ -1,4 +1,4 @@
-package com.example.accidents;
+package com.mch.accidents;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
