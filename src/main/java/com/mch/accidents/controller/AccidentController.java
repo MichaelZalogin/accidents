@@ -4,14 +4,12 @@ import com.mch.accidents.entity.Accident;
 import com.mch.accidents.service.AccidentService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("accident")
+@RequestMapping("accidents")
 public class AccidentController {
 
     private final AccidentService accidents;
@@ -27,10 +25,11 @@ public class AccidentController {
         return "redirect:/index";
     }
 
-//    @GetMapping("/edit")
-//    public String viewCreateAccident() {
-//        return "editAccident";
-//    }
+    @GetMapping("/edit")
+    public String viewCreateAccident(Model model, @RequestParam id) {
+
+        return "editAccident";
+    }
 //
 //    @PostMapping("/edit")
 //    public String save(@ModelAttribute Accident accident) {
