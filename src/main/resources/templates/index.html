@@ -34,10 +34,9 @@
                     Dropdown
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="nav-item nav-link" href="#">Главная</a>
+                    <a class="nav-item nav-link" th:href="@{/accidents}">Инциденты</a>
+                    <a class="nav-item nav-link active" th:href="@{/addAccident}">Добавить Инцидент</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -57,7 +56,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th><i class="bi bi-square"></i></th>
                 <th scope="col">№</th>
                 <th scope="col">Название</th>
                 <th scope="col">Описание</th>

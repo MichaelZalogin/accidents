@@ -14,12 +14,12 @@ public class AccidentController {
 
     private final AccidentService accidents;
 
-    @GetMapping("/createAccident")
+    @GetMapping("/addAccident")
     public String viewCreateAccident() {
-        return "createAccident";
+        return "addAccident";
     }
 
-    @PostMapping("/saveAccident")
+    @PostMapping("/addAccident")
     public String save(@ModelAttribute Accident accident) {
         accidents.create(accident);
         return "redirect:/index";

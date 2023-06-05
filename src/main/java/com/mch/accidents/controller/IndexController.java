@@ -14,7 +14,7 @@ public class IndexController {
 
     private final AccidentRepositoryMem accidentRepositoryMem;
 
-    @GetMapping("/")
+    @GetMapping()
     public String index(Model model) {
         model.addAttribute("user", "Michael");
         model.addAttribute("accidents", accidentRepositoryMem.findAll());
