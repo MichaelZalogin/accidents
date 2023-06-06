@@ -20,21 +20,21 @@ public class AccidentController {
     }
 
     @PostMapping("/add")
-    public String save(@ModelAttribute Accident accident) {
+    public String saveAccident(@ModelAttribute Accident accident) {
         accidents.create(accident);
         return "redirect:/index";
     }
 
-    @GetMapping("/edit")
-    public String viewCreateAccident(Model model, @RequestParam id) {
-
-        return "editAccident";
+    @GetMapping("/{id}")
+    public String viewOneAccident(Model model, @PathVariable int id) {
+        model.addAttribute("accident", accidents.findById(id));
+        return "one";
     }
-//
-//    @PostMapping("/edit")
-//    public String save(@ModelAttribute Accident accident) {
-//        accidents.edit(accident);
-//        return "redirect:/index";
-//    }
+
+    @PostMapping("/update")
+    public String updateAccident(@ModelAttribute Accident accident) {
+        accidents.update(accident);
+        return "redirect:/index";
+    }
 
 }

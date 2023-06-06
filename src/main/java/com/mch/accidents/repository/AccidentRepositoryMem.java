@@ -13,7 +13,14 @@ public class AccidentRepositoryMem implements AccidentRepository {
 
     private final Map<Integer, Accident> accidents = new ConcurrentHashMap<>();
 
-    private int id = 1;
+    {
+        accidents.put(1, new Accident(1, "name1", "text1", "address1"));
+        accidents.put(2, new Accident(2, "name2", "text2", "address2"));
+        accidents.put(3, new Accident(3, "name3", "text3", "address3"));
+
+    }
+
+    private int id = 4;
 
     @Override
     public Accident create(Accident accident) {
@@ -38,4 +45,8 @@ public class AccidentRepositoryMem implements AccidentRepository {
         return new ArrayList<>(accidents.values());
     }
 
+    @Override
+    public Accident findById(int id) {
+        return accidents.get(id);
+    }
 }

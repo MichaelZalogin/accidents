@@ -8,8 +8,10 @@ public interface AccidentRepository {
 
     Accident create(Accident accident);
 
-    public boolean update(Accident accident);
+    boolean update(Accident accident);
 
     List<Accident> findAll();
+
+    Accident findById(int id);
 
 }
