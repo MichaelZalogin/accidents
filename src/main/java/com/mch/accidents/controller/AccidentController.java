@@ -27,7 +27,12 @@ public class AccidentController {
 
     @GetMapping("/{id}")
     public String viewOneAccident(Model model, @PathVariable int id) {
-        model.addAttribute("accident", accidents.findById(id));
+        var accident = accidents.findById(id);
+        if (accident == null) {
+            model.addAttribute("message", "Инцидент с указанным идентификатором не найден");
+            return "errors/404";
+        }
+        model.addAttribute("accident", accident);
         return "one";
     }
 
