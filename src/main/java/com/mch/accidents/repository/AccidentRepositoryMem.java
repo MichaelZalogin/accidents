@@ -7,24 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
 public class AccidentRepositoryMem implements AccidentRepository {
 
     private final Map<Integer, Accident> accidents = new ConcurrentHashMap<>();
 
-    {
-        accidents.put(1, new Accident(1, "name1", "text1", "address1"));
-        accidents.put(2, new Accident(2, "name2", "text2", "address2"));
-        accidents.put(3, new Accident(3, "name3", "text3", "address3"));
-
-    }
-
-    private int id = 4;
+    private AtomicInteger id = new AtomicInteger(1);
 
     @Override
     public Accident create(Accident accident) {
-        accident.setId(id++);
+        accident.setId(id.getAndIncrement());
         accidents.put(accident.getId(), accident);
         return accident;
     }
