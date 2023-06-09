@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -21,7 +22,7 @@ public class AccidentService {
         return accidentRepositoryMem.findAll();
     }
 
-    public Accident findById(int id) {
+    public Optional<Accident> findById(int id) {
         return accidentRepositoryMem.findById(id);
     }
 

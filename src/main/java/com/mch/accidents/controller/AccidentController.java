@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 @AllArgsConstructor
 @RequestMapping("accidents")
@@ -27,8 +29,8 @@ public class AccidentController {
 
     @GetMapping("/{id}")
     public String viewOneAccident(Model model, @PathVariable int id) {
-        var accident = accidents.findById(id);
-        if (accident == null) {
+        Optional<Accident> accident = accidents.findById(id);
+        if (accident.isEmpty()) {
             model.addAttribute("message", "Инцидент с указанным идентификатором не найден");
             return "errors/404";
         }

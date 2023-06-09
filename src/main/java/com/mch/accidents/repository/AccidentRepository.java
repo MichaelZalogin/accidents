@@ -3,6 +3,7 @@ package com.mch.accidents.repository;
 import com.mch.accidents.entity.Accident;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AccidentRepository {
 
@@ -12,6 +13,6 @@ public interface AccidentRepository {
 
     List<Accident> findAll();
 
-    Accident findById(int id);
+    Optional<Accident> findById(int id);
 
 }
