@@ -17,4 +17,6 @@ public class Accident {
 
     private String address;
 
+    private AccidentType type;
+
 }
