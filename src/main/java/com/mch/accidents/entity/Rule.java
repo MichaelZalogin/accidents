@@ -1,7 +1,6 @@
 package com.mch.accidents.entity;
-import lombok.*;
 
-import java.util.Set;
+import lombok.*;
 
 @Getter
 @Setter
@@ -9,18 +8,10 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(of = "id")
-public class Accident {
+public class Rule {
 
     private int id;
 
     private String name;
-
-    private String text;
-
-    private String address;
-
-    private AccidentType type;
-
-    private Set<Rule> rules;
 
 }

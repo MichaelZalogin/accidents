@@ -2,7 +2,9 @@ package com.mch.accidents.controller;
 
 import com.mch.accidents.entity.Accident;
 import com.mch.accidents.entity.AccidentType;
+import com.mch.accidents.entity.Rule;
 import com.mch.accidents.service.AccidentService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,11 +28,18 @@ public class AccidentController {
         types.add(new AccidentType(2, "Машина и человек"));
         types.add(new AccidentType(3, "Машина и велосипед"));
         model.addAttribute("types", types);
+        List<Rule> rules = List.of(
+                new Rule(1, "Статья. 1"),
+                new Rule(2, "Статья. 2"),
+                new Rule(3, "Статья. 3")
+        );
+        model.addAttribute("rules", rules);
         return "addAccident";
     }
 
     @PostMapping("/add")
-    public String saveAccident(@ModelAttribute Accident accident) {
+    public String saveAccident(@ModelAttribute Accident accident, HttpServletRequest req) {
+        String[] ids = req.getParameterValues("rIds");
         accidents.create(accident);
         return "redirect:/index";
     }
@@ -42,7 +51,7 @@ public class AccidentController {
             model.addAttribute("message", "Инцидент с указанным идентификатором не найден");
             return "errors/404";
         }
-        model.addAttribute("accident", accident);
+        model.addAttribute("accident", accident.get());
         return "one";
     }
 

@@ -32,7 +32,8 @@ public class AccidentRepositoryMem implements AccidentRepository {
                         accident.getName(),
                         accident.getText(),
                         accident.getAddress(),
-                        accident.getType()
+                        accident.getType(),
+                        accident.getRules()
                 )) != null;
     }
 
