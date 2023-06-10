@@ -5,6 +5,7 @@ import com.mch.accidents.entity.AccidentType;
 import com.mch.accidents.entity.Rule;
 import com.mch.accidents.service.AccidentService;
 import com.mch.accidents.service.AccidentTypeService;
+import com.mch.accidents.service.RuleService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,18 +20,15 @@ import java.util.Optional;
 @RequestMapping("accidents")
 public class AccidentController {
 
-    private final AccidentService accidents;
-    private final AccidentTypeService accidentsType;
+    private final AccidentService accidentService;
+    private final AccidentTypeService accidentTypeService;
+    private final RuleService ruleService;
 
     @GetMapping("/add")
     public String viewCreateAccident(Model model) {
-        List<AccidentType> types = accidentsType.findAll();
+        List<AccidentType> types = accidentTypeService.findAll();
         model.addAttribute("types", types);
-        List<Rule> rules = List.of(
-                new Rule(1, "Статья. 1"),
-                new Rule(2, "Статья. 2"),
-                new Rule(3, "Статья. 3")
-        );
+        List<Rule> rules = ruleService.findAll();
         model.addAttribute("rules", rules);
         return "addAccident";
     }
@@ -38,13 +36,13 @@ public class AccidentController {
     @PostMapping("/add")
     public String saveAccident(@ModelAttribute Accident accident, HttpServletRequest req) {
         String[] ids = req.getParameterValues("rIds");
-        accidents.create(accident);
+        accidentService.create(accident);
         return "redirect:/index";
     }
 
     @GetMapping("/{id}")
     public String viewOneAccident(Model model, @PathVariable int id) {
-        Optional<Accident> accident = accidents.findById(id);
+        Optional<Accident> accident = accidentService.findById(id);
         if (accident.isEmpty()) {
             model.addAttribute("message", "Инцидент с указанным идентификатором не найден");
             return "errors/404";
@@ -55,7 +53,7 @@ public class AccidentController {
 
     @PostMapping("/update")
     public String updateAccident(@ModelAttribute Accident accident) {
-        accidents.update(accident);
+        accidentService.update(accident);
         return "redirect:/index";
     }
 

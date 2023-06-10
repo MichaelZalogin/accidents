@@ -11,10 +11,10 @@ import java.util.List;
 @AllArgsConstructor
 public class AccidentTypeService {
 
-    private final AccidentTypeRepository accidentTypeRepository;
+    private final AccidentTypeRepository accidentTypeRepositoryMem;
 
     public List<AccidentType> findAll() {
-        return accidentTypeRepository.findAll();
+        return accidentTypeRepositoryMem.findAll();
     }
 
 }
