@@ -1,6 +1,7 @@
-package com.mch.accidents.repository;
+package com.mch.accidents.repository.memory;
 
 import com.mch.accidents.entity.Rule;
+import com.mch.accidents.repository.RuleRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

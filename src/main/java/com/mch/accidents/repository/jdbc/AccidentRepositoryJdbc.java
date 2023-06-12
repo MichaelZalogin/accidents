@@ -1,6 +1,7 @@
-package com.mch.accidents.repository;
+package com.mch.accidents.repository.jdbc;
 
 import com.mch.accidents.entity.Accident;
+import com.mch.accidents.repository.AccidentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,7 +18,7 @@ public class AccidentRepositoryJdbc implements AccidentRepository {
     @Override
     public Accident create(Accident accident) {
         jdbc.update("""
-                        INSERT INTO accidents (name)
+                        INSERT INTO accident (name)
                         VALUES (?)
                         """,
                 accident.getName());
@@ -40,7 +41,7 @@ public class AccidentRepositoryJdbc implements AccidentRepository {
     public List<Accident> findAll() {
         return jdbc.query("""
                         SELECT id, name
-                        FROM accidents
+                        FROM accident
                         """,
                 (resultSet, rowNum) -> {
                     Accident accident = new Accident();
@@ -54,7 +55,7 @@ public class AccidentRepositoryJdbc implements AccidentRepository {
     public Optional<Accident> findById(int id) {
         return Optional.ofNullable(jdbc.queryForObject("""
                         SELECT id, name
-                        FROM accidents
+                        FROM accident
                         WHERE id = ?
                         """,
                 (resultSet, rowNum) -> {
