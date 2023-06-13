@@ -1,7 +1,7 @@
 package com.mch.accidents.service;
 
 import com.mch.accidents.entity.Rule;
-import com.mch.accidents.repository.RuleRepository;
+import com.mch.accidents.repository.jdbc.RuleRepositoryJdbc;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +11,10 @@ import java.util.List;
 @AllArgsConstructor
 public class RuleService {
 
-    private final RuleRepository ruleRepositoryMem;
+    private final RuleRepositoryJdbc ruleRepository;
 
     public List<Rule> findAll() {
-        return ruleRepositoryMem.findAll();
+        return ruleRepository.findAll();
     }
 
 }
