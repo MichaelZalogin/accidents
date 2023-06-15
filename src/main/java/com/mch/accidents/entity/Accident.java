@@ -22,7 +22,7 @@ public class Accident {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "text")
+    @Column(name = "description")
     private String text;
 
     @Column(name = "address")
