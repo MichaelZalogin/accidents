@@ -25,15 +25,6 @@ public class AccidentRepositoryJdbc implements AccidentRepository {
         return accident;
     }
 
-    public Accident create2(Accident accident) {
-        jdbc.update("""
-                        INSERT INTO accident (name)
-                        VALUES (?)
-                        """,
-                accident.getName());
-        return accident;
-    }
-
     @Override
     public boolean update(Accident accident) {
         return jdbc.update(

@@ -1,10 +1,7 @@
 package com.mch.accidents.entity;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Set;
 
 @Getter
@@ -28,8 +25,12 @@ public class Accident {
     @Column(name = "address")
     private String address;
 
+    @ManyToOne
+    @JoinColumn(name = "accident_type_id")
     private AccidentType type;
 
+    @ManyToOne
+    @JoinColumn(name = "accident_id")
     private Set<Rule> rules;
 
 }
