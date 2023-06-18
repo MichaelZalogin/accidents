@@ -42,9 +42,9 @@ public class AccidentRepositoryHibernate implements AccidentRepository {
                             """
                                     UPDATE Accident
                                     SET name = :fName,
-                                     description = :fDescription,
-                                     address = :fAddress,
-                                     accident_type_id = :fAccident_type_id
+                                    description = :fDescription,
+                                    address = :fAddress,
+                                    accident_type_id = :fAccident_type_id
                                     WHERE id = :fId
                                     """)
                     .setParameter("fName", accident.getName())
